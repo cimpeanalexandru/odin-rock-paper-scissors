@@ -7,20 +7,18 @@
     <title>Odin - Rock Paper Scissors JS Project</title>
   </head>
   <body>
-    <!-- Internal JS - will move to externam js file -->
+    <!-- Internal JS - will move to external js file -->
     <script>
       // Computer Choice function
       function getComputerChoice() {
         let computerChoice = Math.floor(Math.random() * 3);
-        console.log(computerChoice);
         if (computerChoice === 0) {
-          computerChoice = "Rock";
+          computerChoice = "ROCK";
         } else if (computerChoice === 1) {
-          computerChoice = "Paper";
+          computerChoice = "PAPER";
         } else if (computerChoice === 2) {
-          computerChoice = "Scissors";
+          computerChoice = "SCISSORS";
         }
-        computerChoice = computerChoice.toUpperCase();
         return computerChoice;
       }
 
@@ -64,9 +62,28 @@
         }
       }
 
-      const playerSelection = "rock";
-      const computerSelection = getComputerChoice();
-      console.log(playRound(playerSelection, computerSelection));
+      // Game function
+      function game() {
+        for (let i = 1; i <= 5; i++) {
+          let computerSelection = getComputerChoice();
+          let playerSelection = prompt(
+            "Choose Rock, Paper or Scissors!"
+          ).toUpperCase();
+          if (
+            playerSelection === "ROCK" ||
+            playerSelection === "PAPER" ||
+            playerSelection === "SCISSORS"
+          ) {
+            console.log(playRound(playerSelection, computerSelection));
+            console.log(" ");
+          } else {
+            alert("ERROR! Please type 'Rock', 'Paper' or 'Scissors'!");
+            i--;
+          }
+        }
+      }
+
+      game();
     </script>
   </body>
 </html>
